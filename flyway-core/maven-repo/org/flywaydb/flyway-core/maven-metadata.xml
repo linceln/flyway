@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.flywaydb</groupId>
+  <artifactId>flyway-core</artifactId>
+  <versioning>
+    <release>6.4.4-oracle</release>
+    <versions>
+      <version>6.4.4-oracle</version>
+    </versions>
+    <lastUpdated>20210530135129</lastUpdated>
+  </versioning>
+</metadata>
