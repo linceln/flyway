@@ -795,22 +795,13 @@ public class OracleSchema extends Schema<OracleDatabase> {
                             (xmlDbAvailable
                                     ? "UNION SELECT '" + XML_SCHEMA.getName() + "' FROM DUAL WHERE EXISTS(" +
                                     "SELECT * FROM " + database.dbaOrAll("XML_SCHEMAS") + " WHERE OWNER = ?) "
-                                    : "") +
-                            // Credentials.
+                                    : "");
 
-
-
-                                    "UNION SELECT '" + CREDENTIAL.getName() + "' FROM DUAL WHERE EXISTS(" +
-                                            "SELECT * FROM ALL_SCHEDULER_CREDENTIALS WHERE OWNER = ?) "
-
-
-
-
-
-
-
-
-                    ;
+            if (database.getMajorVersion() > 10) {
+                // Credentials.
+                query = query + "UNION SELECT '" + CREDENTIAL.getName() + "' FROM DUAL WHERE EXISTS(" +
+                        "SELECT * FROM ALL_SCHEDULER_CREDENTIALS WHERE OWNER = ?) ";
+            }
 
             int n = 6 + (xmlDbAvailable ? 1 : 0) +
 
