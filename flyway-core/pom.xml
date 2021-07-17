@@ -19,9 +19,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.flywaydb</groupId>
+        <groupId>io.github.linceln</groupId>
         <artifactId>flyway-parent</artifactId>
-        <version>5.0.7-oracle11g</version>
+        <version>5.0.7</version>
     </parent>
     <artifactId>flyway-core</artifactId>
     <packaging>jar</packaging>

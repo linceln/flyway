@@ -27,9 +27,9 @@
     mvn clean install -PCommandlinePlatformAssemblies
     -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.flywaydb</groupId>
+    <groupId>io.github.linceln</groupId>
     <artifactId>flyway-parent</artifactId>
-    <version>5.0.7-oracle11g</version>
+    <version>5.0.7</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <description>Flyway: Database Migrations Made Easy.</description>
@@ -39,13 +39,14 @@
             <name>Apache License, Version 2.0</name>
             <url>https://flywaydb.org/licenses/flyway-community.txt</url>
             <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
     <scm>
 
-        <url>https://github.com/flyway/flyway</url>
-        <connection>scm:git:https://github.com/flyway/flyway.git</connection>
-        <developerConnection>scm:git:https://github.com/flyway/flyway.git</developerConnection>
+        <url>https://github.com/linceln/flyway.git</url>
+        <connection>scm:git:https://github.com/linceln/flyway.git</connection>
+        <developerConnection>scm:git:https://github.com/linceln/flyway.git</developerConnection>
 
 
 
@@ -56,8 +57,9 @@
     </scm>
     <developers>
         <developer>
-            <id>axel</id>
-            <name>Axel Fontaine</name>
+            <id>linceln</id>
+            <name>linceln</name>
+            <email>lince.forest@outlook.com</email>
         </developer>
     </developers>
 
@@ -81,21 +83,19 @@
     </modules>
 
     <distributionManagement>
-        <repository>
-            <id>local-repo-release</id>
-            <name>GitHub Release</name>
-            <url>file://${project.basedir}/maven-repo</url>
-        </repository>
-<!--        <snapshotRepository>-->
-<!--            <id>sonatype-nexus-snapshots</id>-->
-<!--            <name>Sonatype Nexus Snapshots</name>-->
-<!--            <url>http://oss.sonatype.org/content/repositories/snapshots</url>-->
-<!--        </snapshotRepository>-->
 <!--        <repository>-->
-<!--            <id>sonatype-nexus-staging</id>-->
-<!--            <name>Nexus Release Repository</name>-->
-<!--            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--            <id>local-repo-release</id>-->
+<!--            <name>GitHub Release</name>-->
+<!--            <url>file://${project.basedir}/maven-repo</url>-->
 <!--        </repository>-->
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
     <repositories>
@@ -651,7 +651,7 @@
 
     <profiles>
         <profile>
-            <id>release-sign-artifacts</id>
+            <id>release</id>
             <activation>
                 <property>
                     <name>performRelease</name>
@@ -664,7 +664,7 @@
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <configuration>
                             <encoding>UTF-8</encoding>
-                            <additionalparam>-Xdoclint:none</additionalparam>
+<!--                            <additionalparam>-Xdoclint:none</additionalparam>-->
                         </configuration>
                         <executions>
                             <execution>
@@ -678,7 +678,7 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.4</version>
+                        <version>1.5</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -690,8 +690,33 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+
                 </plugins>
             </build>
+
+            <!-- 【注】snapshotRepository 与 repository 中的 id 一定要与 setting.xml 中 server 的 id 保持一致！ -->
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
         </profile>
     </profiles>
 </project>
