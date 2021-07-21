@@ -94,8 +94,8 @@
             <!-- Workaround for https://issues.apache.org/jira/browse/MASSEMBLY-864 -->
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <includes>
-                <include>org.flywaydb:flyway-core</include>
-                <include>org.flywaydb:flyway-commandline</include>
+                <include>io.github.linceln:flyway-core</include>
+                <include>io.github.linceln:flyway-commandline</include>
             </includes>
         </dependencySet>
         <dependencySet>
@@ -106,7 +106,7 @@
                 <include>*</include>
             </includes>
             <excludes>
-                <exclude>org.flywaydb:flyway-*</exclude>
+                <exclude>io.github.linceln:flyway-*</exclude>
             </excludes>
         </dependencySet>
     </dependencySets>

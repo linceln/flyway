@@ -29,7 +29,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.linceln</groupId>
     <artifactId>flyway-parent</artifactId>
-    <version>5.0.7</version>
+    <version>5.0.7-oracle</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <description>Flyway: Database Migrations Made Easy.</description>
@@ -65,9 +65,9 @@
 
     <modules>
         <module>flyway-core</module>
-        <module>flyway-gradle-plugin</module>
-        <module>flyway-maven-plugin</module>
-        <module>flyway-commandline</module>
+<!--        <module>flyway-gradle-plugin</module>-->
+<!--        <module>flyway-maven-plugin</module>-->
+<!--        <module>flyway-commandline</module>-->
 
 
 
@@ -84,7 +84,7 @@
 
     <distributionManagement>
 <!--        <repository>-->
-<!--            <id>local-repo-release</id>-->
+<!--            <id>ossrh</id>-->
 <!--            <name>GitHub Release</name>-->
 <!--            <url>file://${project.basedir}/maven-repo</url>-->
 <!--        </repository>-->
@@ -720,3 +720,6 @@
         </profile>
     </profiles>
 </project>
+
+<!--cmd打开-->
+<!--mvn clean deploy -P release -e-->

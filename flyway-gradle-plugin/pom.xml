@@ -18,14 +18,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.flywaydb</groupId>
-        <artifactId>flyway-parent</artifactId>
-        <version>0-SNAPSHOT</version>
-    </parent>
+<!--    <parent>-->
+<!--        <groupId>io.github.linceln</groupId>-->
+<!--        <artifactId>flyway-parent</artifactId>-->
+<!--        <version>5.0.7</version>-->
+<!--        <relativePath>../pom.xml</relativePath>-->
+<!--    </parent>-->
     <artifactId>flyway-gradle-plugin</artifactId>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <layout>default</layout>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <!-- Force correct module ordering -->
