@@ -21,7 +21,7 @@
     <parent>
         <groupId>io.github.linceln</groupId>
         <artifactId>flyway-parent</artifactId>
-        <version>5.0.7-oracle</version>
+        <version>5.0.8</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>flyway-core</artifactId>
